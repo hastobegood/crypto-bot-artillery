@@ -1,0 +1,8 @@
+# IntelliJ IDEA
+.idea
+*.iml
+
+# NodeJS
+node_modules
+lib
+reports
