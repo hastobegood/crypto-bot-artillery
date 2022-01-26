@@ -11,13 +11,13 @@ import { ExchangeOrderClient } from './order/infrastructure/exchanges/exchange-o
 import { HttpOrderClient } from './order/infrastructure/http-order-client.js';
 import { OrderClient } from './order/domain/order-client.js';
 import { SendOrderClient } from './order/domain/send-order-client.js';
+import { CheckOrderClient } from './order/domain/check-order-client.js';
 
 import { BinanceTickerClient } from './ticker/infrastructure/exchanges/binance/binance-ticker-client.js';
 import { ExchangeTickerClient } from './ticker/infrastructure/exchanges/exchange-ticker-client.js';
 import { HttpTickerClient } from './ticker/infrastructure/http-ticker-client.js';
 import { TickerClient } from './ticker/domain/ticker-client.js';
 import { FetchTickerClient } from './ticker/domain/fetch-ticker-client.js';
-import { CheckOrderClient } from './order';
 
 export interface ArtilleryOptions {
   binanceApiInfoProvider?: ApiInfoProvider;
