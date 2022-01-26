@@ -1,53 +1,44 @@
-import { buildDefaultFetchAllCandlesticks } from '../builders/candlestick/domain/candlestick-test-builder.js';
-import { buildDefaultCheckOrder, buildDefaultSendOrder } from '../builders/order/domain/order-test-builder.js';
-import { buildDefaultFetchTicker } from '../builders/ticker/domain/ticker-test-builder.js';
-import { Artillery } from '../../src/artillery.js';
+import { ApiInfoProvider, Client } from '@hastobegood/crypto-clients-binance';
+import { ArtilleryOptions, loadExchangesClients } from '../../src/artillery.js';
 
 describe('Artillery', () => {
-  describe('Given an artillery without option', () => {
-    let artillery: Artillery;
+  describe('Given an empty artillery options', () => {
+    let artilleryOptions: ArtilleryOptions;
 
     beforeEach(() => {
-      artillery = new Artillery({});
+      artilleryOptions = {};
     });
 
-    describe('When candlestick artillery is called', () => {
-      it('Then error is thrown', async () => {
-        try {
-          await artillery.loadFetchCandlestickClient().fetchAll(buildDefaultFetchAllCandlesticks());
-          fail();
-        } catch (error) {
-          expect((error as Error).message).toEqual("Unsupported 'Binance' exchange");
-        }
+    describe('When exchanges clients are loaded', () => {
+      it('Then empty object is returned', async () => {
+        const result = loadExchangesClients(artilleryOptions);
+        expect(result).toEqual({});
       });
     });
+  });
 
-    describe('When order artillery is called', () => {
-      it('Then error is thrown', async () => {
-        try {
-          await artillery.loadSendOrderClient().send(buildDefaultSendOrder());
-          fail();
-        } catch (error) {
-          expect((error as Error).message).toEqual("Unsupported 'Binance' exchange");
-        }
+  describe('Given a non empty artillery options', () => {
+    let artilleryOptions: ArtilleryOptions;
+    let binanceApiInfoProvider: ApiInfoProvider;
 
-        try {
-          await artillery.loadCheckOrderClient().check(buildDefaultCheckOrder());
-          fail();
-        } catch (error) {
-          expect((error as Error).message).toEqual("Unsupported 'Binance' exchange");
-        }
-      });
+    beforeEach(() => {
+      binanceApiInfoProvider = {
+        getApiUrl: async (): Promise<string> => 'binance-api-url',
+        getApiKey: async (): Promise<string> => 'binance-api-key',
+        getSecretKey: async (): Promise<string> => 'binance-secret-key',
+      };
+
+      artilleryOptions = {
+        binanceApiInfoProvider: binanceApiInfoProvider,
+      };
     });
 
-    describe('When ticker artillery is called', () => {
-      it('Then error is thrown', async () => {
-        try {
-          await artillery.loadFetchTickerClient().fetch(buildDefaultFetchTicker());
-          fail();
-        } catch (error) {
-          expect((error as Error).message).toEqual("Unsupported 'Binance' exchange");
-        }
+    describe('When exchanges clients are loaded', () => {
+      it('Then non empty object is returned', async () => {
+        const result = loadExchangesClients(artilleryOptions);
+        expect(result).toEqual({
+          binanceClient: new Client(binanceApiInfoProvider),
+        });
       });
     });
   });
