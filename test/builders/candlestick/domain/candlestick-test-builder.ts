@@ -42,7 +42,7 @@ export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date, st
   do {
     results.push({
       openingDate: current,
-      closingDate: current + stepSeconds * 1_000,
+      closingDate: current + stepSeconds * 1_000 - 1,
       openingPrice: openingPrice,
       closingPrice: closingPrice,
       lowestPrice: lowestPrice,
