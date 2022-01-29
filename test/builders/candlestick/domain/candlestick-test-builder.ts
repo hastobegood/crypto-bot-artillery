@@ -34,7 +34,7 @@ export const buildCandlestick = (closingDate: Date, closingPrice: number): Candl
   };
 };
 
-export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date): Candlestick[] => {
+export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date, stepSeconds: number): Candlestick[] => {
   const end = closingDate.valueOf();
   let current = openingDate.valueOf();
   let openingPrice = randomNumber(400, 500);
@@ -46,13 +46,13 @@ export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date): C
   do {
     results.push({
       openingDate: current,
-      closingDate: current + 60 * 1000,
+      closingDate: current + stepSeconds * 1_000,
       openingPrice: openingPrice,
       closingPrice: closingPrice,
       lowestPrice: lowestPrice,
       highestPrice: highestPrice,
     });
-    current += 60 * 1000;
+    current += stepSeconds * 1_000;
     openingPrice = closingPrice;
     closingPrice = randomNumber(400, 500);
     lowestPrice = randomNumber(350, 400);
