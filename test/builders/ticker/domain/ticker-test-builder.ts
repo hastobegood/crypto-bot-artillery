@@ -15,6 +15,8 @@ export const buildDefaultTicker = (): Ticker => {
     baseAssetPrecision: randomNumber(8, 10),
     quoteAssetPrecision: randomNumber(8, 10),
     quantityPrecision: randomNumber(2, 6),
+    quantityInterval: randomNumber(0.01, 0.000001),
     pricePrecision: randomNumber(2, 6),
+    priceInterval: randomNumber(0.01, 0.000001),
   };
 };

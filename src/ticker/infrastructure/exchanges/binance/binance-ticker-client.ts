@@ -1,6 +1,6 @@
 import { toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
 import { ExchangeTickerClient } from '../exchange-ticker-client.js';
-import { Client, GetExchangeInfoCommand, GetExchangeInfoInput, GetExchangeInfoOutputSymbol } from '@hastobegood/crypto-clients-binance';
+import { Client, GetExchangeInfoCommand, GetExchangeInfoInput, GetExchangeInfoOutputSymbol, GetExchangeInfoOutputSymbolFilter } from '@hastobegood/crypto-clients-binance';
 import { FetchTicker, Ticker, TickerExchange } from '../../../../ticker/domain/model/ticker.js';
 
 export class BinanceTickerClient implements ExchangeTickerClient {
@@ -19,8 +19,8 @@ export class BinanceTickerClient implements ExchangeTickerClient {
       symbol: fetchTicker.symbol,
       baseAssetPrecision: output.data.symbols[0].baseAssetPrecision,
       quoteAssetPrecision: output.data.symbols[0].quoteAssetPrecision,
-      quantityPrecision: this.#extractPrecision(this.#getLotSizeFilter(output.data.symbols)!.stepSize!),
-      pricePrecision: this.#extractPrecision(this.#getPriceFilter(output.data.symbols)!.tickSize!),
+      ...this.#getQuantityInfo(output.data.symbols[0]),
+      ...this.#getPriceInfo(output.data.symbols[0]),
     };
   }
 
@@ -30,20 +30,32 @@ export class BinanceTickerClient implements ExchangeTickerClient {
     };
   }
 
-  #getLotSizeFilter(symbols: GetExchangeInfoOutputSymbol[]) {
-    const filter = this.#getSymbolFilter(symbols, 'LOT_SIZE');
+  #getQuantityInfo(symbol: GetExchangeInfoOutputSymbol): { quantityPrecision: number; quantityInterval?: number } {
+    const filter = this.#getSymbolFilter(symbol, 'LOT_SIZE');
+    if (filter?.filterType !== 'LOT_SIZE') {
+      throw new Error(`Unable to find symbol filter 'LOT_SIZE'`);
+    }
 
-    return filter?.filterType === 'LOT_SIZE' ? filter : null;
+    return {
+      quantityPrecision: this.#extractPrecision(filter.stepSize),
+      quantityInterval: +filter.stepSize || undefined,
+    };
   }
 
-  #getPriceFilter(symbols: GetExchangeInfoOutputSymbol[]) {
-    const filter = this.#getSymbolFilter(symbols, 'PRICE_FILTER');
+  #getPriceInfo(symbol: GetExchangeInfoOutputSymbol): { pricePrecision: number; priceInterval?: number } {
+    const filter = this.#getSymbolFilter(symbol, 'PRICE_FILTER');
+    if (filter?.filterType !== 'PRICE_FILTER') {
+      throw new Error(`Unable to find symbol filter 'PRICE_FILTER'`);
+    }
 
-    return filter?.filterType === 'PRICE_FILTER' ? filter : null;
+    return {
+      pricePrecision: this.#extractPrecision(filter.tickSize),
+      priceInterval: +filter.tickSize || undefined,
+    };
   }
 
-  #getSymbolFilter(symbols: GetExchangeInfoOutputSymbol[], filterType: string) {
-    return symbols[0].filters.find((filter) => filter.filterType === filterType);
+  #getSymbolFilter(symbol: GetExchangeInfoOutputSymbol, filterType: string): GetExchangeInfoOutputSymbolFilter | null {
+    return symbol.filters.find((filter) => filter.filterType === filterType) || null;
   }
 
   #extractPrecision(value: string): number {

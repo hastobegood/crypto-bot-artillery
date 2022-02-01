@@ -53,7 +53,9 @@ describe('BinanceTickerClient', () => {
           baseAssetPrecision: getExchangeInfoOutput.symbols[0].baseAssetPrecision,
           quoteAssetPrecision: getExchangeInfoOutput.symbols[0].quoteAssetPrecision,
           quantityPrecision: 6,
+          quantityInterval: 0.000001,
           pricePrecision: 0,
+          priceInterval: 1,
         });
 
         expect(clientMock.send).toHaveBeenCalledTimes(1);

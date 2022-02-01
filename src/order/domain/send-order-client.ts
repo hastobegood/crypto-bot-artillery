@@ -27,14 +27,18 @@ export class SendOrderClient {
     }
 
     const creationDate = new Date();
-    const order = await this.fetchTickerClient.fetch({ exchange: sendOrder.exchange, symbol: sendOrder.symbol });
+    const ticker = await this.fetchTickerClient.fetch({ exchange: sendOrder.exchange, symbol: sendOrder.symbol });
 
     return {
       ...sendOrder,
       id: randomUUID(),
       creationDate: creationDate,
-      requestedQuantity: truncateNumber(sendOrder.requestedQuantity, sendOrder.quote ? order.quoteAssetPrecision : order.quantityPrecision),
-      requestedPrice: sendOrder.requestedPrice ? truncateNumber(sendOrder.requestedPrice, order.pricePrecision) : undefined,
+      requestedQuantity: this.#buildValue(sendOrder.requestedQuantity, sendOrder.quote ? ticker.quoteAssetPrecision : ticker.quantityPrecision, ticker.quantityInterval),
+      requestedPrice: sendOrder.requestedPrice ? this.#buildValue(sendOrder.requestedPrice, ticker.pricePrecision, ticker.priceInterval) : undefined,
     };
+  }
+
+  #buildValue(value: number, precision: number, interval?: number): number {
+    return truncateNumber(value - (interval ? value % interval : 0), precision);
   }
 }

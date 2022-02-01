@@ -82,7 +82,7 @@ describe('SendOrderClient', () => {
         expect(sendParams[0]).toEqual({
           ...sendOrder,
           id: expect.stringMatching('.*'),
-          requestedQuantity: truncateNumber(sendOrder.requestedQuantity, ticker.quoteAssetPrecision),
+          requestedQuantity: truncateNumber(sendOrder.requestedQuantity - (sendOrder.requestedQuantity % ticker.quantityInterval!), ticker.quoteAssetPrecision),
           creationDate: creationDate,
         });
       });
@@ -114,7 +114,7 @@ describe('SendOrderClient', () => {
         expect(sendParams[0]).toEqual({
           ...sendOrder,
           id: expect.stringMatching('.*'),
-          requestedQuantity: truncateNumber(sendOrder.requestedQuantity, ticker.quantityPrecision),
+          requestedQuantity: truncateNumber(sendOrder.requestedQuantity - (sendOrder.requestedQuantity % ticker.quantityInterval!), ticker.quantityPrecision),
           creationDate: creationDate,
         });
       });
@@ -188,8 +188,8 @@ describe('SendOrderClient', () => {
         expect(sendParams[0]).toEqual({
           ...sendOrder,
           id: expect.stringMatching('.*'),
-          requestedQuantity: truncateNumber(sendOrder.requestedQuantity, ticker.quantityPrecision),
-          requestedPrice: truncateNumber(sendOrder.requestedPrice!, ticker.pricePrecision),
+          requestedQuantity: truncateNumber(sendOrder.requestedQuantity - (sendOrder.requestedQuantity % ticker.quantityInterval!), ticker.quantityPrecision),
+          requestedPrice: truncateNumber(sendOrder.requestedPrice! - (sendOrder.requestedPrice! % ticker.priceInterval!), ticker.pricePrecision),
           creationDate: creationDate,
         });
       });
