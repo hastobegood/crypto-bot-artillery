@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto';
 import { truncateNumber } from '../../common/util/math.js';
 import { FetchTickerClient } from '../../ticker/domain/fetch-ticker-client.js';
+import { Ticker } from '../../ticker/domain/model/ticker.js';
 import { Order, SendOrder, TransientOrder } from './model/order.js';
 import { OrderClient } from './order-client.js';
 
@@ -33,12 +34,28 @@ export class SendOrderClient {
       ...sendOrder,
       id: randomUUID(),
       creationDate: creationDate,
-      requestedQuantity: this.#buildValue(sendOrder.requestedQuantity, sendOrder.quote ? ticker.quoteAssetPrecision : ticker.quantityPrecision, ticker.quantityInterval),
-      requestedPrice: sendOrder.requestedPrice ? this.#buildValue(sendOrder.requestedPrice, ticker.pricePrecision, ticker.priceInterval) : undefined,
+      requestedQuantity: this.#buildQuantity(sendOrder, ticker),
+      requestedPrice: this.#buildPrice(sendOrder, ticker),
     };
   }
 
-  #buildValue(value: number, precision: number, interval?: number): number {
-    return truncateNumber(value - (interval ? value % interval : 0), precision);
+  #buildQuantity(sendOrder: SendOrder, ticker: Ticker): number {
+    if (sendOrder.quote) {
+      return sendOrder.requestedQuantity;
+    }
+
+    return truncateNumber(this.#applyInterval(sendOrder.requestedQuantity, ticker.quantityInterval), ticker.quantityPrecision);
+  }
+
+  #buildPrice(sendOrder: SendOrder, ticker: Ticker): number | undefined {
+    if (!sendOrder.requestedPrice) {
+      return undefined;
+    }
+
+    return truncateNumber(this.#applyInterval(sendOrder.requestedPrice, ticker.priceInterval), ticker.pricePrecision);
+  }
+
+  #applyInterval(value: number, interval?: number): number {
+    return value - (interval ? value % interval : 0);
   }
 }

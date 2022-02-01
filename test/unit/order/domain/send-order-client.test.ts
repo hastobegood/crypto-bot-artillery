@@ -82,7 +82,6 @@ describe('SendOrderClient', () => {
         expect(sendParams[0]).toEqual({
           ...sendOrder,
           id: expect.stringMatching('.*'),
-          requestedQuantity: truncateNumber(sendOrder.requestedQuantity - (sendOrder.requestedQuantity % ticker.quantityInterval!), ticker.quoteAssetPrecision),
           creationDate: creationDate,
         });
       });
