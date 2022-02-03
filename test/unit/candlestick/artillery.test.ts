@@ -10,9 +10,11 @@ describe('Artillery', () => {
     beforeEach(() => {
       exchangesClients = {
         binanceClient: new Client({
-          getApiUrl: async (): Promise<string> => 'binance-api-url',
-          getApiKey: async (): Promise<string> => 'binance-api-key',
-          getSecretKey: async (): Promise<string> => 'binance-secret-key',
+          apiInfoProvider: {
+            getApiUrl: async (): Promise<string> => 'binance-api-url',
+            getApiKey: async (): Promise<string> => 'binance-api-key',
+            getSecretKey: async (): Promise<string> => 'binance-secret-key',
+          },
         }),
       };
     });

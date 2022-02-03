@@ -37,7 +37,7 @@ describe('Artillery', () => {
       it('Then non empty object is returned', async () => {
         const result = loadExchangesClients(artilleryOptions);
         expect(result).toEqual({
-          binanceClient: new Client(binanceApiInfoProvider),
+          binanceClient: new Client({ apiInfoProvider: binanceApiInfoProvider }),
         });
       });
     });
