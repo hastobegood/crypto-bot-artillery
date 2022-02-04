@@ -1,3 +1,5 @@
+process.env.LOG_LEVEL = 'info';
+
 import { ApiInfoProvider, Client } from '@hastobegood/crypto-clients-binance';
 import { ArtilleryOptions, loadExchangesClients } from '../../src/artillery.js';
 

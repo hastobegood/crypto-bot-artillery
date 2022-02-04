@@ -1,9 +1,9 @@
 import pino from 'pino';
 
 const defaultLogger = pino({
-  level: 'info',
+  level: process.env.LOG_LEVEL,
   timestamp: pino.stdTimeFunctions.isoTime,
-  messageKey: 'messsage',
+  messageKey: 'message',
   nestedKey: 'data',
   base: null,
   formatters: {
