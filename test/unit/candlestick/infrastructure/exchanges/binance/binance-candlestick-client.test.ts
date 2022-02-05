@@ -51,6 +51,7 @@ describe('BinanceCandlestickClient', () => {
             closingPrice: +element[4],
             lowestPrice: +element[3],
             highestPrice: +element[2],
+            volume: +element[5],
           })),
         });
 

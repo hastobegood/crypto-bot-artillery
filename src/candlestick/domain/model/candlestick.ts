@@ -21,4 +21,5 @@ export interface Candlestick {
   closingPrice: number;
   lowestPrice: number;
   highestPrice: number;
+  volume: number;
 }

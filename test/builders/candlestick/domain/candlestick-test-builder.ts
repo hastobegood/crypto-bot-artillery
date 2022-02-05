@@ -27,6 +27,7 @@ export const buildDefaultCandlestick = (): Candlestick => {
     closingPrice: randomNumber(1_000, 100_000),
     lowestPrice: randomNumber(1_000, 100_000),
     highestPrice: randomNumber(1_000, 100_000),
+    volume: randomNumber(10_000, 100_000),
   };
 };
 
@@ -37,6 +38,7 @@ export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date, st
   let closingPrice = randomNumber(400, 500);
   let lowestPrice = randomNumber(350, 400);
   let highestPrice = randomNumber(500, 550);
+  let volume = randomNumber(10_000, 100_000);
 
   const results: Candlestick[] = [];
   do {
@@ -47,12 +49,14 @@ export const buildCandlesticksFromTo = (openingDate: Date, closingDate: Date, st
       closingPrice: closingPrice,
       lowestPrice: lowestPrice,
       highestPrice: highestPrice,
+      volume: volume,
     });
     current += stepSeconds * 1_000;
     openingPrice = closingPrice;
     closingPrice = randomNumber(400, 500);
     lowestPrice = randomNumber(350, 400);
     highestPrice = randomNumber(500, 550);
+    volume = randomNumber(10_000, 100_000);
   } while (current <= end);
 
   return results;
