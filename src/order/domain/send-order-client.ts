@@ -41,7 +41,7 @@ export class SendOrderClient {
 
   #buildQuantity(sendOrder: SendOrder, ticker: Ticker): number {
     if (sendOrder.quote) {
-      return sendOrder.requestedQuantity;
+      return truncateNumber(sendOrder.requestedQuantity, ticker.quoteAssetPrecision);
     }
 
     return truncateNumber(this.#applyInterval(sendOrder.requestedQuantity, ticker.quantityInterval), ticker.quantityPrecision);

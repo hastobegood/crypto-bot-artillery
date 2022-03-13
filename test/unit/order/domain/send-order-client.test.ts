@@ -82,6 +82,7 @@ describe('SendOrderClient', () => {
         expect(sendParams[0]).toEqual({
           ...sendOrder,
           id: expect.stringMatching('.*'),
+          requestedQuantity: truncateNumber(sendOrder.requestedQuantity, ticker.quoteAssetPrecision),
           creationDate: creationDate,
         });
       });
