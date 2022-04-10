@@ -18,7 +18,13 @@
     "no-console": "error",
     "prettier/prettier": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-empty-interface": "off"
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ]
   },
   "ignorePatterns": [
     "node_modules",
