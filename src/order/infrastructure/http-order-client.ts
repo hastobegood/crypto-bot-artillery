@@ -1,6 +1,7 @@
-import { OrderClient } from '../domain/order-client.js';
-import { ExchangeOrderClient } from './exchanges/exchange-order-client.js';
 import { CheckOrder, Order, OrderCheckup, OrderExchange, TransientOrder } from '../domain/model/order.js';
+import { OrderClient } from '../domain/order-client.js';
+
+import { ExchangeOrderClient } from './exchanges/exchange-order-client.js';
 
 export class HttpOrderClient implements OrderClient {
   constructor(private exchangeOrderClients: ExchangeOrderClient[]) {}

@@ -1,11 +1,12 @@
 import { ExchangesClients } from '../common/exchanges/clients.js';
 import { FetchTickerClient } from '../ticker/domain/fetch-ticker-client.js';
+
+import { CheckOrderClient } from './domain/check-order-client.js';
+import { OrderClient } from './domain/order-client.js';
+import { SendOrderClient } from './domain/send-order-client.js';
 import { BinanceOrderClient } from './infrastructure/exchanges/binance/binance-order-client.js';
 import { ExchangeOrderClient } from './infrastructure/exchanges/exchange-order-client.js';
 import { HttpOrderClient } from './infrastructure/http-order-client.js';
-import { OrderClient } from './domain/order-client.js';
-import { SendOrderClient } from './domain/send-order-client.js';
-import { CheckOrderClient } from './domain/check-order-client.js';
 
 let orderClient: OrderClient;
 

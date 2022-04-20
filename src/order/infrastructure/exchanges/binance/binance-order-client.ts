@@ -1,9 +1,10 @@
+import { Client, GetAccountTradesListCommand, GetAccountTradesListInput, GetOrderCommand, GetOrderInput, GetOrderOutput, SendOrderCommand, SendOrderInput, SendOrderOutput } from '@hastobegood/crypto-clients-binance';
+
+import { fromBinanceOrderStatus, toBinanceOrderSide, toBinanceOrderType, toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
 import { roundNumber } from '../../../../common/util/math.js';
 import { extractAssets } from '../../../../common/util/symbol.js';
-import { fromBinanceOrderStatus, toBinanceOrderSide, toBinanceOrderType, toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
-import { ExchangeOrderClient } from '../exchange-order-client.js';
-import { Client, GetAccountTradesListCommand, GetAccountTradesListInput, GetOrderCommand, GetOrderInput, GetOrderOutput, SendOrderCommand, SendOrderInput, SendOrderOutput } from '@hastobegood/crypto-clients-binance';
 import { CheckOrder, Order, OrderCheckup, OrderExchange, TransientOrder } from '../../../../order/domain/model/order.js';
+import { ExchangeOrderClient } from '../exchange-order-client.js';
 
 export class BinanceOrderClient implements ExchangeOrderClient {
   constructor(private client: Client) {}

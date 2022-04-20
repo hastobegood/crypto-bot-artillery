@@ -1,8 +1,8 @@
-import pino from 'pino';
+import { pino, stdTimeFunctions } from 'pino';
 
 const defaultLogger = pino({
   level: process.env.LOG_LEVEL,
-  timestamp: pino.stdTimeFunctions.isoTime,
+  timestamp: stdTimeFunctions.isoTime,
   messageKey: 'message',
   nestedKey: 'data',
   base: null,

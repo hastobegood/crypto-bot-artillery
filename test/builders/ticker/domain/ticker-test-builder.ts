@@ -1,5 +1,5 @@
-import { randomFromList, randomNumber, randomSymbol } from '../../random-test-builder.js';
 import { FetchTicker, Ticker } from '../../../../src/ticker/domain/model/ticker.js';
+import { randomFromList, randomNumber, randomSymbol } from '../../random-test-builder.js';
 
 export const buildDefaultFetchTicker = (): FetchTicker => {
   return {

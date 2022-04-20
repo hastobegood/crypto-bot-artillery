@@ -1,8 +1,9 @@
+import { Client, GetExchangeInfoOutput } from '@hastobegood/crypto-clients-binance';
+
 import { toBinanceSymbol } from '../../../../../../src/common/exchanges/binance/binance-converter.js';
 import { FetchTicker } from '../../../../../../src/ticker/domain/model/ticker.js';
-import { buildDefaultFetchTicker } from '../../../../../builders/ticker/domain/ticker-test-builder.js';
-import { Client, GetExchangeInfoOutput } from '@hastobegood/crypto-clients-binance';
 import { BinanceTickerClient } from '../../../../../../src/ticker/infrastructure/exchanges/binance/binance-ticker-client.js';
+import { buildDefaultFetchTicker } from '../../../../../builders/ticker/domain/ticker-test-builder.js';
 import {
   buildBinanceGetExchangeInfoOutputSymbolLotSizeFilter,
   buildBinanceGetExchangeInfoOutputSymbolPriceFilter,

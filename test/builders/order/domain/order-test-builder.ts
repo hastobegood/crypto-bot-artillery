@@ -1,5 +1,5 @@
-import { randomBoolean, randomFromList, randomNumber, randomString, randomSymbol } from '../../random-test-builder.js';
 import { CheckOrder, Order, OrderCheckup, SendOrder, TransientOrder } from '../../../../src/order/domain/model/order.js';
+import { randomBoolean, randomFromList, randomNumber, randomString, randomSymbol } from '../../random-test-builder.js';
 
 export const buildDefaultTransientOrder = (): TransientOrder => {
   return buildDefaultTransientMarketOrder();

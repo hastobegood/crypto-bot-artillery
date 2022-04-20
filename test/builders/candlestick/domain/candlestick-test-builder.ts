@@ -1,5 +1,5 @@
-import { randomFromList, randomNumber, randomSymbol } from '../../random-test-builder.js';
 import { Candlestick, Candlesticks, FetchAllCandlesticks } from '../../../../src/candlestick/domain/model/candlestick.js';
+import { randomFromList, randomNumber, randomSymbol } from '../../random-test-builder.js';
 
 export const buildDefaultFetchAllCandlesticks = (): FetchAllCandlesticks => {
   return {

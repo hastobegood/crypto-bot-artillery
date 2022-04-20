@@ -1,12 +1,13 @@
 import MockDate from 'mockdate';
+
 import { truncateNumber } from '../../../../src/common/util/math.js';
-import { FetchTickerClient } from '../../../../src/ticker/domain/fetch-ticker-client.js';
-import { Ticker } from '../../../../src/ticker/domain/model/ticker.js';
+import { Order, SendOrder } from '../../../../src/order/domain/model/order.js';
 import { OrderClient } from '../../../../src/order/domain/order-client.js';
 import { SendOrderClient } from '../../../../src/order/domain/send-order-client.js';
-import { Order, SendOrder } from '../../../../src/order/domain/model/order.js';
-import { buildDefaultTicker } from '../../../builders/ticker/domain/ticker-test-builder.js';
+import { FetchTickerClient } from '../../../../src/ticker/domain/fetch-ticker-client.js';
+import { Ticker } from '../../../../src/ticker/domain/model/ticker.js';
 import { buildDefaultLimitOrder, buildDefaultMarketOrder, buildDefaultSendLimitOrder, buildDefaultSendMarketOrder } from '../../../builders/order/domain/order-test-builder.js';
+import { buildDefaultTicker } from '../../../builders/ticker/domain/ticker-test-builder.js';
 
 const fetchTickerClientMock = jest.mocked(jest.genMockFromModule<FetchTickerClient>('../../../../src/ticker/domain/fetch-ticker-client.js'), true);
 const orderClientMock = jest.mocked(jest.genMockFromModule<OrderClient>('../../../../src/order/domain/order-client.js'), true);

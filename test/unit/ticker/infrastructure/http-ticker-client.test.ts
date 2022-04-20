@@ -1,6 +1,6 @@
+import { FetchTicker, Ticker, TickerExchange } from '../../../../src/ticker/domain/model/ticker.js';
 import { BinanceTickerClient } from '../../../../src/ticker/infrastructure/exchanges/binance/binance-ticker-client.js';
 import { HttpTickerClient } from '../../../../src/ticker/infrastructure/http-ticker-client.js';
-import { FetchTicker, Ticker, TickerExchange } from '../../../../src/ticker/domain/model/ticker.js';
 import { buildDefaultFetchTicker, buildDefaultTicker } from '../../../builders/ticker/domain/ticker-test-builder.js';
 
 const binanceTickerClientMock = jest.mocked(jest.genMockFromModule<BinanceTickerClient>('../../../../src/ticker/infrastructure/exchanges/binance/binance-ticker-client.js'), true);

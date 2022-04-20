@@ -1,7 +1,8 @@
 import { Client } from '@hastobegood/crypto-clients-binance';
+
 import { ExchangesClients } from '../../../src/common/exchanges/clients.js';
-import { FetchTickerClient } from '../../../src/ticker/domain/fetch-ticker-client.js';
 import { loadFetchTickerClient } from '../../../src/ticker/artillery.js';
+import { FetchTickerClient } from '../../../src/ticker/domain/fetch-ticker-client.js';
 
 describe('Artillery', () => {
   describe('Given exchanges clients', () => {

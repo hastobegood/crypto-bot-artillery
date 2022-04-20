@@ -1,5 +1,5 @@
-import { generate } from 'randomstring';
 import { sample } from 'lodash';
+import { generate } from 'randomstring';
 
 export const randomString = (): string => {
   return generate({ length: 10, charset: 'alphanumeric' });

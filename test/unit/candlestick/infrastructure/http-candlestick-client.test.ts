@@ -1,6 +1,6 @@
+import { CandlestickExchange, Candlesticks, FetchAllCandlesticks } from '../../../../src/candlestick/domain/model/candlestick.js';
 import { BinanceCandlestickClient } from '../../../../src/candlestick/infrastructure/exchanges/binance/binance-candlestick-client.js';
 import { HttpCandlestickClient } from '../../../../src/candlestick/infrastructure/http-candlestick-client.js';
-import { CandlestickExchange, Candlesticks, FetchAllCandlesticks } from '../../../../src/candlestick/domain/model/candlestick.js';
 import { buildDefaultCandlesticks, buildDefaultFetchAllCandlesticks } from '../../../builders/candlestick/domain/candlestick-test-builder.js';
 
 const binanceCandlestickClientMock = jest.mocked(jest.genMockFromModule<BinanceCandlestickClient>('../../../../src/candlestick/infrastructure/exchanges/binance/binance-candlestick-client.js'), true);

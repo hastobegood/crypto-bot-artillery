@@ -1,7 +1,8 @@
 import { Client } from '@hastobegood/crypto-clients-binance';
-import { ExchangesClients } from '../../../src/common/exchanges/clients.js';
-import { FetchCandlestickClient } from '../../../src/candlestick/domain/fetch-candlestick-client.js';
+
 import { loadFetchCandlestickClient } from '../../../src/candlestick/artillery.js';
+import { FetchCandlestickClient } from '../../../src/candlestick/domain/fetch-candlestick-client.js';
+import { ExchangesClients } from '../../../src/common/exchanges/clients.js';
 
 describe('Artillery', () => {
   describe('Given exchanges clients', () => {

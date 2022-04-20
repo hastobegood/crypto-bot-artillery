@@ -1,11 +1,12 @@
+import { Client, GetAccountTradesListOutput, GetOrderOutput, SendOrderOutput } from '@hastobegood/crypto-clients-binance';
+
+import { fromBinanceOrderStatus, toBinanceOrderSide, toBinanceOrderType, toBinanceSymbol } from '../../../../../../src/common/exchanges/binance/binance-converter.js';
 import { roundNumber } from '../../../../../../src/common/util/math.js';
 import { extractAssets } from '../../../../../../src/common/util/symbol.js';
-import { fromBinanceOrderStatus, toBinanceOrderSide, toBinanceOrderType, toBinanceSymbol } from '../../../../../../src/common/exchanges/binance/binance-converter.js';
-import { Client, GetAccountTradesListOutput, GetOrderOutput, SendOrderOutput } from '@hastobegood/crypto-clients-binance';
+import { CheckOrder, TransientOrder } from '../../../../../../src/order/domain/model/order.js';
 import { BinanceOrderClient } from '../../../../../../src/order/infrastructure/exchanges/binance/binance-order-client.js';
 import { buildDefaultCheckOrder, buildDefaultTransientOrder } from '../../../../../builders/order/domain/order-test-builder.js';
 import { buildDefaultBinanceGetAccountTradesListOutput, buildDefaultBinanceGetOrderOutput, buildDefaultBinanceSendOrderOutput } from '../../../../../builders/order/infrastructure/exchanges/binance/binance-order-test-builder.js';
-import { CheckOrder, TransientOrder } from '../../../../../../src/order/domain/model/order.js';
 
 const clientMock = jest.mocked(jest.genMockFromModule<Client>('@hastobegood/crypto-clients-binance'), true);
 
