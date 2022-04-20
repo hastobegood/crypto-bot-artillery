@@ -1,7 +1,8 @@
+import { Client, GetCandlestickDataCommand, GetCandlestickDataInput } from '@hastobegood/crypto-clients-binance';
+
+import { CandlestickExchange, Candlesticks, FetchAllCandlesticks } from '../../../../candlestick/domain/model/candlestick.js';
 import { toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
 import { ExchangeCandlestickClient } from '../exchange-candlestick-client.js';
-import { Client, GetCandlestickDataCommand, GetCandlestickDataInput } from '@hastobegood/crypto-clients-binance';
-import { CandlestickExchange, Candlesticks, FetchAllCandlesticks } from '../../../../candlestick/domain/model/candlestick.js';
 
 export class BinanceCandlestickClient implements ExchangeCandlestickClient {
   constructor(private client: Client) {}

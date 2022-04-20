@@ -1,8 +1,9 @@
-import { toBinanceSymbol } from '../../../../../../src/common/exchanges/binance/binance-converter.js';
-import { FetchAllCandlesticks } from '../../../../../../src/candlestick/domain/model/candlestick.js';
-import { buildDefaultFetchAllCandlesticks } from '../../../../../builders/candlestick/domain/candlestick-test-builder.js';
 import { Client, GetCandlestickDataOutput } from '@hastobegood/crypto-clients-binance';
+
+import { FetchAllCandlesticks } from '../../../../../../src/candlestick/domain/model/candlestick.js';
 import { BinanceCandlestickClient } from '../../../../../../src/candlestick/infrastructure/exchanges/binance/binance-candlestick-client.js';
+import { toBinanceSymbol } from '../../../../../../src/common/exchanges/binance/binance-converter.js';
+import { buildDefaultFetchAllCandlesticks } from '../../../../../builders/candlestick/domain/candlestick-test-builder.js';
 import { buildDefaultBinanceGetCandlestickDataOutput } from '../../../../../builders/candlestick/infrastructure/exchanges/binance/binance-candlestick-test-builder.js';
 
 const clientMock = jest.mocked(jest.genMockFromModule<Client>('@hastobegood/crypto-clients-binance'), true);

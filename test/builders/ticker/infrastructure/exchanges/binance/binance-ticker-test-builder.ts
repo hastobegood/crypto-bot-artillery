@@ -1,5 +1,6 @@
-import { randomAsset, randomBoolean, randomFromList, randomNumber, randomString, randomSymbol } from '../../../../random-test-builder.js';
 import { GetExchangeInfoOutput, GetExchangeInfoOutputRateLimit, GetExchangeInfoOutputSymbol, GetExchangeInfoOutputSymbolFilter } from '@hastobegood/crypto-clients-binance';
+
+import { randomAsset, randomBoolean, randomFromList, randomNumber, randomString, randomSymbol } from '../../../../random-test-builder.js';
 
 export const buildDefaultBinanceGetExchangeInfoOutput = (): GetExchangeInfoOutput => {
   return {

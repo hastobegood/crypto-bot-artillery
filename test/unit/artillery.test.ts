@@ -1,4 +1,5 @@
 import { ApiInfoProvider, Client } from '@hastobegood/crypto-clients-binance';
+
 import { ArtilleryOptions, loadExchangesClients } from '../../src/artillery.js';
 
 describe('Artillery', () => {

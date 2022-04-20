@@ -1,6 +1,7 @@
-import { extractAssets } from '../../util/symbol.js';
 import { OrderSide as BinanceOrderSide, OrderStatus as BinanceOrderStatus, OrderType as BinanceOrderType } from '@hastobegood/crypto-clients-binance';
+
 import { OrderSide, OrderStatus, OrderType } from '../../../order/domain/model/order.js';
+import { extractAssets } from '../../util/symbol.js';
 
 export const toBinanceSymbol = (symbol: string): string => {
   const assets = extractAssets(symbol);

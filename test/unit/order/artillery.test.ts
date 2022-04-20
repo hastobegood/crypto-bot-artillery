@@ -1,10 +1,11 @@
 import { Client } from '@hastobegood/crypto-clients-binance';
+
 import { ExchangesClients } from '../../../src/common/exchanges/clients.js';
-import { HttpTickerClient } from '../../../src/ticker/infrastructure/http-ticker-client.js';
-import { FetchTickerClient } from '../../../src/ticker/domain/fetch-ticker-client.js';
-import { SendOrderClient } from '../../../src/order/domain/send-order-client.js';
-import { CheckOrderClient } from '../../../src/order/domain/check-order-client.js';
 import { loadCheckOrderClient, loadSendOrderClient } from '../../../src/order/artillery.js';
+import { CheckOrderClient } from '../../../src/order/domain/check-order-client.js';
+import { SendOrderClient } from '../../../src/order/domain/send-order-client.js';
+import { FetchTickerClient } from '../../../src/ticker/domain/fetch-ticker-client.js';
+import { HttpTickerClient } from '../../../src/ticker/infrastructure/http-ticker-client.js';
 
 describe('Artillery', () => {
   describe('Given exchanges clients', () => {

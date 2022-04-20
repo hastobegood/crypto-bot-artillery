@@ -1,6 +1,6 @@
+import { CheckOrder, Order, OrderCheckup, OrderExchange, TransientOrder } from '../../../../src/order/domain/model/order.js';
 import { BinanceOrderClient } from '../../../../src/order/infrastructure/exchanges/binance/binance-order-client.js';
 import { HttpOrderClient } from '../../../../src/order/infrastructure/http-order-client.js';
-import { CheckOrder, Order, OrderCheckup, OrderExchange, TransientOrder } from '../../../../src/order/domain/model/order.js';
 import { buildDefaultCheckOrder, buildDefaultOrder, buildDefaultOrderCheckup, buildDefaultTransientOrder } from '../../../builders/order/domain/order-test-builder.js';
 
 const binanceOrderClientMock = jest.mocked(jest.genMockFromModule<BinanceOrderClient>('../../../../src/order/infrastructure/exchanges/binance/binance-order-client.js'), true);

@@ -1,6 +1,7 @@
-import { logger } from './common/log/logger.js';
 import { ApiInfoProvider, Client } from '@hastobegood/crypto-clients-binance';
+
 import { ExchangesClients } from './common/exchanges/clients.js';
+import { logger } from './common/log/logger.js';
 
 export interface ArtilleryOptions {
   binanceApiInfoProvider?: ApiInfoProvider;

@@ -1,6 +1,7 @@
-import { TickerClient } from '../domain/ticker-client.js';
-import { ExchangeTickerClient } from './exchanges/exchange-ticker-client.js';
 import { FetchTicker, Ticker, TickerExchange } from '../domain/model/ticker.js';
+import { TickerClient } from '../domain/ticker-client.js';
+
+import { ExchangeTickerClient } from './exchanges/exchange-ticker-client.js';
 
 export class HttpTickerClient implements TickerClient {
   constructor(private exchangeTickerClients: ExchangeTickerClient[]) {}

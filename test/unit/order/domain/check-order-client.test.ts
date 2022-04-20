@@ -1,6 +1,6 @@
-import { OrderClient } from '../../../../src/order/domain/order-client.js';
 import { CheckOrderClient } from '../../../../src/order/domain/check-order-client.js';
 import { CheckOrder, OrderCheckup } from '../../../../src/order/domain/model/order.js';
+import { OrderClient } from '../../../../src/order/domain/order-client.js';
 import { buildDefaultCheckOrder, buildDefaultOrderCheckup } from '../../../builders/order/domain/order-test-builder.js';
 
 const orderClientMock = jest.mocked(jest.genMockFromModule<OrderClient>('../../../../src/order/domain/order-client.js'), true);

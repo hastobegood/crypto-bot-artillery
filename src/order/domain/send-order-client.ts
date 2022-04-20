@@ -1,7 +1,9 @@
 import { randomUUID } from 'crypto';
+
 import { truncateNumber } from '../../common/util/math.js';
 import { FetchTickerClient } from '../../ticker/domain/fetch-ticker-client.js';
 import { Ticker } from '../../ticker/domain/model/ticker.js';
+
 import { Order, SendOrder, TransientOrder } from './model/order.js';
 import { OrderClient } from './order-client.js';
 

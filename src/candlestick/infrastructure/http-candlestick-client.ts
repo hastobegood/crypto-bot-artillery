@@ -1,6 +1,7 @@
 import { CandlestickClient } from '../domain/candlestick-client.js';
-import { ExchangeCandlestickClient } from './exchanges/exchange-candlestick-client.js';
 import { CandlestickExchange, Candlesticks, FetchAllCandlesticks } from '../domain/model/candlestick.js';
+
+import { ExchangeCandlestickClient } from './exchanges/exchange-candlestick-client.js';
 
 export class HttpCandlestickClient implements CandlestickClient {
   constructor(private exchangeCandlestickClients: ExchangeCandlestickClient[]) {}

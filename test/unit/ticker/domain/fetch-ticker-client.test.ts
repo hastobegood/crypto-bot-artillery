@@ -1,6 +1,6 @@
-import { TickerClient } from '../../../../src/ticker/domain/ticker-client.js';
 import { FetchTickerClient } from '../../../../src/ticker/domain/fetch-ticker-client.js';
 import { FetchTicker, Ticker } from '../../../../src/ticker/domain/model/ticker.js';
+import { TickerClient } from '../../../../src/ticker/domain/ticker-client.js';
 import { buildDefaultFetchTicker, buildDefaultTicker } from '../../../builders/ticker/domain/ticker-test-builder.js';
 
 const tickerClientMock = jest.mocked(jest.genMockFromModule<TickerClient>('../../../../src/ticker/domain/ticker-client.js'), true);

@@ -1,7 +1,8 @@
-import { toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
-import { ExchangeTickerClient } from '../exchange-ticker-client.js';
 import { Client, GetExchangeInfoCommand, GetExchangeInfoInput, GetExchangeInfoOutputSymbol, GetExchangeInfoOutputSymbolFilter } from '@hastobegood/crypto-clients-binance';
+
+import { toBinanceSymbol } from '../../../../common/exchanges/binance/binance-converter.js';
 import { FetchTicker, Ticker, TickerExchange } from '../../../../ticker/domain/model/ticker.js';
+import { ExchangeTickerClient } from '../exchange-ticker-client.js';
 
 export class BinanceTickerClient implements ExchangeTickerClient {
   constructor(private client: Client) {}

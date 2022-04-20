@@ -1,5 +1,6 @@
-import { randomNumber } from '../../../../random-test-builder.js';
 import { GetCandlestickDataOutput } from '@hastobegood/crypto-clients-binance';
+
+import { randomNumber } from '../../../../random-test-builder.js';
 
 export const buildDefaultBinanceGetCandlestickDataOutput = (): GetCandlestickDataOutput => {
   return [1, 2, 3, 4, 5].map(() => [

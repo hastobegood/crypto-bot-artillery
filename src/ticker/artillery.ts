@@ -1,9 +1,10 @@
 import { ExchangesClients } from '../common/exchanges/clients.js';
+
+import { FetchTickerClient } from './domain/fetch-ticker-client.js';
+import { TickerClient } from './domain/ticker-client.js';
 import { BinanceTickerClient } from './infrastructure/exchanges/binance/binance-ticker-client.js';
 import { ExchangeTickerClient } from './infrastructure/exchanges/exchange-ticker-client.js';
 import { HttpTickerClient } from './infrastructure/http-ticker-client.js';
-import { TickerClient } from './domain/ticker-client.js';
-import { FetchTickerClient } from './domain/fetch-ticker-client.js';
 
 let tickerClient: TickerClient;
 
