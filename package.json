@@ -93,7 +93,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "husky": "^8.0.1",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "jest-sonar-reporter": "^2.0.0",
     "lodash": "^4.17.21",
     "mockdate": "^3.0.5",
