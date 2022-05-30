@@ -76,6 +76,7 @@
   "dependencies": {
     "@hastobegood/crypto-clients-binance": "^0.10.0",
     "joi": "^17.6.0",
+    "lodash": "^4.17.21",
     "pino": "^7.11.0"
   },
   "devDependencies": {
@@ -95,7 +96,6 @@
     "husky": "^8.0.1",
     "jest": "^28.1.0",
     "jest-sonar-reporter": "^2.0.0",
-    "lodash": "^4.17.21",
     "mockdate": "^3.0.5",
     "prettier": "^2.6.2",
     "randomstring": "^1.2.2",
