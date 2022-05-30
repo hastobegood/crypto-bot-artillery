@@ -445,10 +445,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@hastobegood/crypto-clients-binance@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@hastobegood/crypto-clients-binance/-/crypto-clients-binance-0.9.0.tgz#b7f53e97b0682353881f62270c990337e56b9532"
-  integrity sha512-Ws81WRvRquOvcM0DycUoErypA4fJD4BRHRJ67P+n69QXPZuTQS66vQv/p5kyS4gWEesTF4H2rMlhv3ecp31RtQ==
+"@hastobegood/crypto-clients-binance@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@hastobegood/crypto-clients-binance/-/crypto-clients-binance-0.10.0.tgz#fb81278a314b57e9c74d634895cf41baaba22518"
+  integrity sha512-VIQRi+2JQA+u20aPXsNwmHMs3MZdYk2zbaPuEQLqcgBWrrothkslFccjq3krXhM0SOODb/ARcByGfAIgIuAuMQ==
   dependencies:
     axios "^0.27.2"
 
@@ -869,10 +869,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.10.tgz#616f16e9d3a2a3d618136b1be244315d95bd7cab"
   integrity sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==
 
-"@types/node@14":
-  version "14.18.16"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.16.tgz#878f670ba3f00482bf859b6550b6010610fc54b5"
-  integrity sha512-X3bUMdK/VmvrWdoTkz+VCn6nwKwrKCFTHtqwBIaQJNx4RUIBBUFXM00bqPz/DsDd+Icjmzm6/tyYZzeGVqb6/Q==
+"@types/node@16":
+  version "16.11.36"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.36.tgz#9ab9f8276987132ed2b225cace2218ba794fc751"
+  integrity sha512-FR5QJe+TaoZ2GsMHkjuwoNabr+UrJNRr2HNOo+r/7vhcuntM6Ee/pRPOnRhhL2XE9OOvX9VLEq+BcXl3VjNoWA==
 
 "@types/pino@^7.0.5":
   version "7.0.5"
