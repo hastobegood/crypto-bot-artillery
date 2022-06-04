@@ -440,10 +440,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@hastobegood/crypto-clients-binance@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@hastobegood/crypto-clients-binance/-/crypto-clients-binance-0.10.0.tgz#fb81278a314b57e9c74d634895cf41baaba22518"
-  integrity sha512-VIQRi+2JQA+u20aPXsNwmHMs3MZdYk2zbaPuEQLqcgBWrrothkslFccjq3krXhM0SOODb/ARcByGfAIgIuAuMQ==
+"@hastobegood/crypto-clients-binance@^0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@hastobegood/crypto-clients-binance/-/crypto-clients-binance-0.11.0.tgz#fcd321c154543405572b3e78f96e1b2434b9406e"
+  integrity sha512-X25l4xlshyhw9nmTKgmeroaT2WHaNFoB+UB0qDkPnSqDdVVHG/VWqTAGR3Tb4pj3SZXS3uy3LLwMTSFBpocCig==
   dependencies:
     axios "^0.27.2"
 
