@@ -34,6 +34,7 @@ export const buildDefaultBinanceGetExchangeInfoOutputSymbol = (): GetExchangeInf
     icebergAllowed: randomBoolean(),
     ocoAllowed: randomBoolean(),
     quoteOrderQtyMarketAllowed: randomBoolean(),
+    allowTrailingStop: randomBoolean(),
     isSpotTradingAllowed: randomBoolean(),
     isMarginTradingAllowed: randomBoolean(),
     filters: [buildDefaultBinanceGetExchangeInfoOutputSymbolFilter(), buildDefaultBinanceGetExchangeInfoOutputSymbolFilter()],
@@ -42,18 +43,9 @@ export const buildDefaultBinanceGetExchangeInfoOutputSymbol = (): GetExchangeInf
 };
 
 export const buildDefaultBinanceGetExchangeInfoOutputSymbolFilter = (): GetExchangeInfoOutputSymbolFilter => {
-  const filterType = randomFromList<'PRICE_FILTER' | 'PERCENT_PRICE' | 'LOT_SIZE' | 'MIN_NOTIONAL' | 'ICEBERG_PARTS' | 'MARKET_LOT_SIZE' | 'MAX_NUM_ORDERS' | 'MAX_NUM_ALGO_ORDERS' | 'MAX_NUM_ICEBERG_ORDERS' | 'MAX_POSITION'>([
-    'PRICE_FILTER',
-    'PERCENT_PRICE',
-    'LOT_SIZE',
-    'MIN_NOTIONAL',
-    'ICEBERG_PARTS',
-    'MARKET_LOT_SIZE',
-    'MAX_NUM_ORDERS',
-    'MAX_NUM_ALGO_ORDERS',
-    'MAX_NUM_ICEBERG_ORDERS',
-    'MAX_POSITION',
-  ]);
+  const filterType = randomFromList<
+    'PRICE_FILTER' | 'PERCENT_PRICE' | 'PERCENT_PRICE_BY_SIDE' | 'LOT_SIZE' | 'MIN_NOTIONAL' | 'ICEBERG_PARTS' | 'MARKET_LOT_SIZE' | 'MAX_NUM_ORDERS' | 'MAX_NUM_ALGO_ORDERS' | 'MAX_NUM_ICEBERG_ORDERS' | 'MAX_POSITION' | 'TRAILING_DELTA'
+  >(['PRICE_FILTER', 'PERCENT_PRICE', 'PERCENT_PRICE_BY_SIDE', 'LOT_SIZE', 'MIN_NOTIONAL', 'ICEBERG_PARTS', 'MARKET_LOT_SIZE', 'MAX_NUM_ORDERS', 'MAX_NUM_ALGO_ORDERS', 'MAX_NUM_ICEBERG_ORDERS', 'MAX_POSITION', 'TRAILING_DELTA']);
 
   switch (filterType) {
     case 'PRICE_FILTER':
@@ -68,6 +60,15 @@ export const buildDefaultBinanceGetExchangeInfoOutputSymbolFilter = (): GetExcha
         filterType: filterType,
         multiplierUp: randomNumber(1, 100).toString(),
         multiplierDown: randomNumber(1_000, 10_000).toString(),
+        avgPriceMins: randomNumber(1, 10),
+      };
+    case 'PERCENT_PRICE_BY_SIDE':
+      return {
+        filterType: filterType,
+        bidMultiplierUp: randomNumber(1, 2).toString(),
+        bidMultiplierDown: randomNumber(0.1, 0.5).toString(),
+        askMultiplierUp: randomNumber(1, 5).toString(),
+        askMultiplierDown: randomNumber(0.1, 0.9).toString(),
         avgPriceMins: randomNumber(1, 10),
       };
     case 'LOT_SIZE':
@@ -109,6 +110,14 @@ export const buildDefaultBinanceGetExchangeInfoOutputSymbolFilter = (): GetExcha
       return {
         filterType: filterType,
         maxPosition: randomNumber(1, 100).toString(),
+      };
+    case 'TRAILING_DELTA':
+      return {
+        filterType: filterType,
+        minTrailingAboveDelta: randomNumber(10, 200),
+        maxTrailingAboveDelta: randomNumber(1_000, 2_000),
+        minTrailingBelowDelta: randomNumber(10, 200),
+        maxTrailingBelowDelta: randomNumber(1_000, 2_000),
       };
   }
 };
