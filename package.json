@@ -79,12 +79,12 @@
     "pino": "^8.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.1",
+    "@types/jest": "^28.1.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "16",
     "@types/pino": "^7.0.5",
     "@types/randomstring": "^1.1.8",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
