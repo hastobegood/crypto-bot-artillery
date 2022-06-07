@@ -8,15 +8,15 @@ const tickerClientMock = jest.mocked(jest.genMockFromModule<TickerClient>('../..
 let fetchTickerClient: FetchTickerClient;
 beforeEach(() => {
   tickerClientMock.fetch = jest.fn();
-
-  fetchTickerClient = new FetchTickerClient(tickerClientMock);
 });
 
 describe('FetchTickerClient', () => {
-  describe('Given a ticker to fetch', () => {
+  describe('Given a ticker to fetch without cache', () => {
     let fetchTicker: FetchTicker;
 
     beforeEach(() => {
+      fetchTickerClient = new FetchTickerClient(tickerClientMock);
+
       fetchTicker = buildDefaultFetchTicker();
     });
 
@@ -29,7 +29,43 @@ describe('FetchTickerClient', () => {
       });
 
       it('Then ticker is returned', async () => {
-        const result = await fetchTickerClient.fetch(fetchTicker);
+        let result = await fetchTickerClient.fetch(fetchTicker);
+        expect(result).toEqual(ticker);
+        result = await fetchTickerClient.fetch(fetchTicker);
+        expect(result).toEqual(ticker);
+
+        expect(tickerClientMock.fetch).toHaveBeenCalledTimes(2);
+        let fetchParams = tickerClientMock.fetch.mock.calls[0];
+        expect(fetchParams.length).toEqual(1);
+        expect(fetchParams[0]).toEqual(fetchTicker);
+        fetchParams = tickerClientMock.fetch.mock.calls[1];
+        expect(fetchParams.length).toEqual(1);
+        expect(fetchParams[0]).toEqual(fetchTicker);
+      });
+    });
+  });
+
+  describe('Given a ticker to fetch with cache', () => {
+    let fetchTicker: FetchTicker;
+
+    beforeEach(() => {
+      fetchTickerClient = new FetchTickerClient(tickerClientMock, 0);
+
+      fetchTicker = buildDefaultFetchTicker();
+    });
+
+    describe('When ticker is found', () => {
+      let ticker: Ticker;
+
+      beforeEach(() => {
+        ticker = buildDefaultTicker();
+        tickerClientMock.fetch.mockResolvedValue(ticker);
+      });
+
+      it('Then ticker is returned', async () => {
+        let result = await fetchTickerClient.fetch(fetchTicker);
+        expect(result).toEqual(ticker);
+        result = await fetchTickerClient.fetch(fetchTicker);
         expect(result).toEqual(ticker);
 
         expect(tickerClientMock.fetch).toHaveBeenCalledTimes(1);

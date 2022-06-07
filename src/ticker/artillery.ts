@@ -19,6 +19,6 @@ const loadTickerClient = (exchangesClients: ExchangesClients): TickerClient => {
   return tickerClient;
 };
 
-export const loadFetchTickerClient = (exchangesClients: ExchangesClients): FetchTickerClient => {
-  return new FetchTickerClient(loadTickerClient(exchangesClients));
+export const loadFetchTickerClient = (exchangesClients: ExchangesClients, ttl?: number): FetchTickerClient => {
+  return new FetchTickerClient(loadTickerClient(exchangesClients), ttl);
 };
